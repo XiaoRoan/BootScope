@@ -1,0 +1,30 @@
+{
+  "manifest_version": 3,
+  "name": "BootScope",
+  "short_name": "BootScope",
+  "version": "0.1.0",
+  "description": "对当前站点或指定 BaseURL 探测 Spring Boot Actuator / Swagger / Druid / 文档等未授权暴露，支持常见路径绕过变体。仅用于已授权测试。",
+  "permissions": ["storage", "activeTab", "scripting"],
+  "host_permissions": ["<all_urls>"],
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "BootScope",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    }
+  },
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "spb-selfcheck@local",
+      "strict_min_version": "115.0"
+    }
+  }
+}

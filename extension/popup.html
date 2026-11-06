@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <title>BootScope</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header>
+    <h1>BootScope</h1>
+    <span class="ver">v0.1</span>
+  </header>
+
+  <section class="form">
+    <label for="baseUrl">BaseURL（留空使用当前站点）</label>
+    <div class="row">
+      <label class="scheme-toggle" title="勾选后强制使用 http；默认 https">
+        <input id="useHttp" type="checkbox">
+        <span>http</span>
+      </label>
+      <input id="baseUrl" type="text" spellcheck="false" list="baseHistory" placeholder="example.com 或 example.com/app">
+      <datalist id="baseHistory"></datalist>
+      <button id="fillCurrent" type="button">当前站点</button>
+    </div>
+    <div id="originHint" class="hint"></div>
+
+    <div class="cand-box">
+      <div class="cand-head">
+        <span>自行判断baseURL路径（点击填入）</span>
+        <button id="refreshCandidates" type="button">重新提取</button>
+      </div>
+      <div id="candidateList" class="cand-list">
+        <span class="cand-empty">正在提取…</span>
+      </div>
+    </div>
+
+    <label class="check">
+      <input id="useBypass" type="checkbox" checked>
+      <span>对关键路径 + Actuator 路径启用绕过/编码变体（;.js / ..;/ / ;/ / URL 编码 / 双重编码）</span>
+    </label>
+
+    <div class="field-inline">
+      <span>每个路径 fuzz 后间隔</span>
+      <input id="intervalSec" type="number" min="0" max="30" step="0.1" placeholder="0">
+      <span>秒（选填，1 = 每个路径后等 1 秒）</span>
+    </div>
+
+    <div class="actions">
+      <button id="run" class="primary" type="button" disabled>运行</button>
+      <button id="stop" type="button" disabled>停止</button>
+      <button id="copy" type="button" disabled>复制结果</button>
+      <button id="exportMd" type="button" disabled>导出MD</button>
+      <button id="exportCsv" type="button" disabled>导出CSV</button>
+      <button id="clear" type="button">清空</button>
+    </div>
+
+    <label class="check">
+      <input id="showProtected" type="checkbox">
+      <span>显示受保护 / 非命中（401/403、跳登录、405）</span>
+    </label>
+  </section>
+
+  <section class="status">
+    <div id="progress"></div>
+    <div id="fingerprint"></div>
+  </section>
+
+  <section id="results" class="results"></section>
+
+  <footer>
+    默认只读 GET、不带 Cookie · 扫描期间请保持弹窗打开 · 仅用于已授权测试
+  </footer>
+
+  <script src="lib/dict.js"></script>
+  <script src="lib/variants.js"></script>
+  <script src="lib/detect.js"></script>
+  <script src="lib/scanner.js"></script>
+  <script src="lib/report.js"></script>
+  <script src="popup.js"></script>
+</body>
+</html>

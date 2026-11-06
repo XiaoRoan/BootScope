@@ -1,0 +1,11 @@
+.DS_Store
+Thumbs.db
+*.log
+node_modules/
+web-ext-artifacts/
+*.zip
+*.xpi
+*.crx
+*.pem
+.env
+.claude/
